@@ -152,8 +152,8 @@ public class ConsultaPaciente extends javax.swing.JFrame {
         modelo.addColumn("CPF");
         modelo.addColumn("RG");
         modelo.addColumn("Idade");
-        
-        //Teste
+        modelo.addColumn("Idade");
+        modelo.addColumn("Idade");
 
         for(int i=0;i < CadastrarPaciente.p.getListagemPaciente().size();i++){
             modelo.addRow(new String[]{
