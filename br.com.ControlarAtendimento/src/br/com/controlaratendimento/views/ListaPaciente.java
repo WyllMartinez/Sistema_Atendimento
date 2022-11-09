@@ -6,6 +6,7 @@ package br.com.controlaratendimento.views;
 
 import java.awt.ActiveEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +22,29 @@ public class ListaPaciente extends javax.swing.JFrame  {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
+                DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("Id");
+        modelo.addColumn("Nome");
+        modelo.addColumn("CPF");
+        modelo.addColumn("RG");
+        modelo.addColumn("Idade");
+      
+
+        for(int i=0;i < CadastrarPaciente.p.getListagemPaciente().size();i++){
+            modelo.addRow(new String[]{
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getId()),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getNome(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getCpf(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getRg(),
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getIdade()),
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i)),
+                
+            });
+        }
+        listagemPaciente.setModel(modelo);
+
+        
     }
 
     /**
@@ -34,13 +58,13 @@ public class ListaPaciente extends javax.swing.JFrame  {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listagemPaciente = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listagemPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -51,7 +75,7 @@ public class ListaPaciente extends javax.swing.JFrame  {
                 "Id", "Nome", "CPF", "RG", "Idade"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(listagemPaciente);
 
         jButton1.setText("Selecionar");
 
@@ -136,7 +160,7 @@ public class ListaPaciente extends javax.swing.JFrame  {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable listagemPaciente;
     // End of variables declaration//GEN-END:variables
 }

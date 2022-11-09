@@ -4,6 +4,8 @@
  */
 package br.com.controlaratendimento.views;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author wyllm
@@ -17,6 +19,42 @@ public class ListaMedico extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+         DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nome");
+        modelo.addColumn("CPF");
+        modelo.addColumn("RG");
+        modelo.addColumn("Telefone");
+        modelo.addColumn("CEP");
+        modelo.addColumn("Endereço");
+        modelo.addColumn("Bairro");
+        modelo.addColumn("Complemento");
+        modelo.addColumn("Cidade");
+        
+        //Teste
+
+        for(int i=0;i < CadastrarMedico.m.getListagemMedico().size();i++){
+            modelo.addRow(new String[]{
+                String.valueOf(CadastrarMedico.m.getListagemMedico().get(i).getId()),
+                CadastrarMedico.m.getListagemMedico().get(i).getNome(),
+                CadastrarMedico.m.getListagemMedico().get(i).getCpf(),
+                CadastrarMedico.m.getListagemMedico().get(i).getRg(),
+                CadastrarMedico.m.getListagemMedico().get(i).getTelefone(),
+                CadastrarMedico.m.getListagemMedico().get(i).getCep(),
+                CadastrarMedico.m.getListagemMedico().get(i).getEndereco(),
+                CadastrarMedico.m.getListagemMedico().get(i).getBairro(),
+                CadastrarMedico.m.getListagemMedico().get(i).getComplemento(),
+                String.valueOf(CadastrarMedico.m.getListagemMedico().get(i).getCidade()),
+                String.valueOf(CadastrarMedico.m.getListagemMedico().get(i)),
+           
+            });
+        
+        listagemMedico.setModel(modelo);
+        }
+ 
+        
     }
 
     /**
@@ -30,13 +68,13 @@ public class ListaMedico extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listagemMedico = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listagemMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -47,7 +85,7 @@ public class ListaMedico extends javax.swing.JFrame {
                 "Id", "Nome", "CPF", "RG", "Idade"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(listagemMedico);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +179,7 @@ public class ListaMedico extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable listagemMedico;
     // End of variables declaration//GEN-END:variables
 }

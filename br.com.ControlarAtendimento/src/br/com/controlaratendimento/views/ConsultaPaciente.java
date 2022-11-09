@@ -25,6 +25,40 @@ public class ConsultaPaciente extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+                DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("Id");
+        modelo.addColumn("Nome");
+        modelo.addColumn("CPF");
+        modelo.addColumn("RG");
+        modelo.addColumn("Idade");
+        modelo.addColumn("Telefone");
+        modelo.addColumn("CEP");
+        modelo.addColumn("Endereço");
+        modelo.addColumn("Bairro");
+        modelo.addColumn("Complemento");
+        modelo.addColumn("Cidade");
+
+        for(int i=0;i < CadastrarPaciente.p.getListagemPaciente().size();i++){
+            modelo.addRow(new String[]{
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getId()),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getNome(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getCpf(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getRg(),
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getIdade()),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getTelefone(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getCep(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getEndereco(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getBairro(),
+                CadastrarPaciente.p.getListagemPaciente().get(i).getComplemento(),
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getCidade()),
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i)),
+                
+            });
+        }
+        tabelaPaciente.setModel(modelo);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -92,6 +126,7 @@ public class ConsultaPaciente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaPaciente);
 
+        jButton1.setBackground(new java.awt.Color(51, 204, 0));
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,26 +180,6 @@ public class ConsultaPaciente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        DefaultTableModel modelo = new DefaultTableModel();
-        
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nome");
-        modelo.addColumn("CPF");
-        modelo.addColumn("RG");
-        modelo.addColumn("Idade");
-        modelo.addColumn("Idade");
-        modelo.addColumn("Idade");
-
-        for(int i=0;i < CadastrarPaciente.p.getListagemPaciente().size();i++){
-            modelo.addRow(new String[]{
-                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getId()),
-                CadastrarPaciente.p.getListagemPaciente().get(i).getNome(),
-                CadastrarPaciente.p.getListagemPaciente().get(i).getCpf(),
-                CadastrarPaciente.p.getListagemPaciente().get(i).getRg(),
-                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getIdade()),
-            });
-        }
-        tabelaPaciente.setModel(modelo);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
