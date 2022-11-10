@@ -6,6 +6,8 @@ package br.com.controlaratendimento.views;
 
 import java.awt.ActiveEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -75,8 +77,14 @@ public class ListaPaciente extends javax.swing.JFrame  {
                 "Id", "Nome", "CPF", "RG", "Idade"
             }
         ));
+        listagemPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listagemPacienteMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(listagemPaciente);
 
+        jButton1.setBackground(new java.awt.Color(51, 204, 0));
         jButton1.setText("Selecionar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -119,6 +127,21 @@ public class ListaPaciente extends javax.swing.JFrame  {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listagemPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemPacienteMouseClicked
+        // TODO add your handling code here:
+        if (listagemPaciente.getSelectedRow() > -1) {
+            
+        }
+        listagemPaciente.getColumn(0);
+        listagemPaciente.getColumn(1);
+        listagemPaciente.getColumn(2);
+        listagemPaciente.getColumn(3);
+        listagemPaciente.getColumn(4);
+        listagemPaciente.getColumn(5);
+        return;
+        
+    }//GEN-LAST:event_listagemPacienteMouseClicked
 
     /**
      * @param args the command line arguments

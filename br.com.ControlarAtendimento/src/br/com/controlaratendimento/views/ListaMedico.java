@@ -76,10 +76,7 @@ public class ListaMedico extends javax.swing.JFrame {
 
         listagemMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Id", "Nome", "CPF", "RG", "Idade"
@@ -93,6 +90,7 @@ public class ListaMedico extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(51, 204, 0));
         jButton1.setText("Selecionar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
