@@ -79,9 +79,6 @@ public class AdicionarFila extends javax.swing.JFrame {
         this.nomePacienteFila = nomePacienteFila;
     }
 
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -276,24 +273,25 @@ public class AdicionarFila extends javax.swing.JFrame {
 
     private void idPacienteFilaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idPacienteFilaKeyPressed
         // TODO add your handling code here:
-       
-       if( KeyEvent.getKeyText( evt.getKeyCode() ) == "F9" ) { new ListaPaciente().setVisible(true); } 
-        
+
+        if (KeyEvent.getKeyText(evt.getKeyCode()) == "F9") {
+            new ListaPaciente().setVisible(true);
+            setaCampos();
+        }
+
     }//GEN-LAST:event_idPacienteFilaKeyPressed
 
     private void idMedicoFilaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idMedicoFilaKeyPressed
         // TODO add your handling code here:
-        if( KeyEvent.getKeyText( evt.getKeyCode() ) == "F9" ) { new ListaMedico().setVisible(true); } 
+        if (KeyEvent.getKeyText(evt.getKeyCode()) == "F9") {
+            new ListaMedico().setVisible(true);
+        }
     }//GEN-LAST:event_idMedicoFilaKeyPressed
 
-    public void setaCampos(String id, String nome, String cpf, String idade){
-       idPacienteFila.setText(id);
-       nomePacienteFila.setText(nome);
-       cpfPacienteFila.setText(cpf);
-       idadePacienteFila.setText(idade);
-       
+    public void setaCampos() {
+        
     }
-    
+
     public static void main(String args[]) {
 
         try {

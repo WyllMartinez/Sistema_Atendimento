@@ -147,14 +147,14 @@ public class ListaPaciente extends javax.swing.JFrame {
     }
 
     private void selecionarPacienteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarPacienteListaActionPerformed
+        
         int row = tabelaListagemPaciente.getSelectedRow();
-
+        
         String codPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 0));
         String nomePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 1));
         String cpfPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 2));
         String idadePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 3));
-        
-        
+
     }//GEN-LAST:event_selecionarPacienteListaActionPerformed
 
     /**
