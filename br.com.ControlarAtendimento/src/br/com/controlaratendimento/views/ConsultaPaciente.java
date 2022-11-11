@@ -39,6 +39,8 @@ public class ConsultaPaciente extends javax.swing.JFrame {
         modelo.addColumn("Bairro");
         modelo.addColumn("Complemento");
         modelo.addColumn("Cidade");
+        
+        CadastrarPaciente cp = new CadastrarPaciente();
 
         for(int i=0;i < CadastrarPaciente.p.getListagemPaciente().size();i++){
             modelo.addRow(new String[]{
@@ -52,9 +54,7 @@ public class ConsultaPaciente extends javax.swing.JFrame {
                 CadastrarPaciente.p.getListagemPaciente().get(i).getEndereco(),
                 CadastrarPaciente.p.getListagemPaciente().get(i).getBairro(),
                 CadastrarPaciente.p.getListagemPaciente().get(i).getComplemento(),
-                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getCidade()),
-                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i)),
-                
+                cp.getCidadePaciente().getItemAt(CadastrarPaciente.p.getListagemPaciente().get(i).getCidade()),
             });
         }
         tabelaPaciente.setModel(modelo);

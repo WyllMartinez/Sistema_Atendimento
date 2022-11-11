@@ -20,40 +20,23 @@ public class ListaMedico extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-         DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("Codigo");
         modelo.addColumn("Nome");
-        modelo.addColumn("CPF");
-        modelo.addColumn("RG");
-        modelo.addColumn("Telefone");
-        modelo.addColumn("CEP");
-        modelo.addColumn("Endereço");
-        modelo.addColumn("Bairro");
-        modelo.addColumn("Complemento");
-        modelo.addColumn("Cidade");
-        
-        //Teste
+        modelo.addColumn("Especialidade");
+        modelo.addColumn("CRM");
 
-        for(int i=0;i < CadastrarMedico.m.getListagemMedico().size();i++){
+        //Teste
+        for (int i = 0; i < CadastrarMedico.m.getListagemMedico().size(); i++) {
             modelo.addRow(new String[]{
                 String.valueOf(CadastrarMedico.m.getListagemMedico().get(i).getId()),
                 CadastrarMedico.m.getListagemMedico().get(i).getNome(),
                 CadastrarMedico.m.getListagemMedico().get(i).getCpf(),
-                CadastrarMedico.m.getListagemMedico().get(i).getRg(),
-                CadastrarMedico.m.getListagemMedico().get(i).getTelefone(),
-                CadastrarMedico.m.getListagemMedico().get(i).getCep(),
-                CadastrarMedico.m.getListagemMedico().get(i).getEndereco(),
-                CadastrarMedico.m.getListagemMedico().get(i).getBairro(),
-                CadastrarMedico.m.getListagemMedico().get(i).getComplemento(),
-                String.valueOf(CadastrarMedico.m.getListagemMedico().get(i).getCidade()),
-                String.valueOf(CadastrarMedico.m.getListagemMedico().get(i)),
-           
-            });
-        
-        listagemMedico.setModel(modelo);
+                String.valueOf(CadastrarMedico.m.getListagemMedico().get(i).getCrm()),});
+            
+            listagemMedico.setModel(modelo);
         }
- 
         
     }
 
@@ -79,9 +62,24 @@ public class ListaMedico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nome", "CPF", "RG", "Idade"
+                "Id", "Nome", "CPF", "Idade"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(listagemMedico);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

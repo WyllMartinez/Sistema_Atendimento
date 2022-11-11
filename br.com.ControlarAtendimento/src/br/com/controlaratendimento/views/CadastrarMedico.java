@@ -6,6 +6,7 @@ package br.com.controlaratendimento.views;
 
 import br.com.controlaratendimento.models.Medico;
 import java.awt.event.KeyEvent;
+import javax.swing.JComboBox;
 
 import javax.swing.JOptionPane;
 
@@ -15,10 +16,12 @@ import javax.swing.JOptionPane;
  */
 public class CadastrarMedico extends javax.swing.JFrame {
 
+    public JComboBox<String> getCidadeMedico() {
+        return cidadeMedico;
+    }
+
     public static Medico m = new Medico();
-    /**
-     * Creates new form CadastrarMedico
-     */
+    
     public CadastrarMedico() {
         initComponents();
         
@@ -310,7 +313,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
             nvMedico.setEndereco(enderecoMedico.getText());
             nvMedico.setBairro(bairroMedico.getText());
             nvMedico.setComplemento(complementoMedico.getText());
-            nvMedico.setCidade(cidadeMedico.getItemCount());
+            nvMedico.setCidade(cidadeMedico.getSelectedIndex());
             
 
             m.getListagemMedico().add(nvMedico);

@@ -6,6 +6,7 @@ package br.com.controlaratendimento.views;
 
 import br.com.controlaratendimento.models.Paciente;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,10 @@ import javax.swing.JOptionPane;
  * @author wyllm
  */
 public class CadastrarPaciente extends javax.swing.JFrame {
+
+    public JComboBox<String> getCidadePaciente() {
+        return cidadePaciente;
+    }
 
     public static Paciente p = new Paciente();
 
@@ -298,7 +303,7 @@ public class CadastrarPaciente extends javax.swing.JFrame {
             nvPaciente.setIdade(Integer.parseInt(idadePaciente.getText()));
             nvPaciente.setEndereco(enderecoPaciente.getText());
             nvPaciente.setBairro(bairroPaciente.getText());
-            nvPaciente.setCidade(cidadePaciente.getItemCount());
+            nvPaciente.setCidade(cidadePaciente.getSelectedIndex());
 
             p.getListagemPaciente().add(nvPaciente);
 

@@ -8,38 +8,32 @@ import java.awt.ActiveEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ListaPaciente extends javax.swing.JFrame  {
+public class ListaPaciente extends javax.swing.JFrame {
 
     public ListaPaciente() {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-                DefaultTableModel modelo = new DefaultTableModel();
-        
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("CPF");
-        modelo.addColumn("RG");
-        modelo.addColumn("Idade");
-      
+        modelo.addColumn("IDade");
 
-        for(int i=0;i < CadastrarPaciente.p.getListagemPaciente().size();i++){
+        for (int i = 0; i < CadastrarPaciente.p.getListagemPaciente().size(); i++) {
             modelo.addRow(new String[]{
                 String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getId()),
                 CadastrarPaciente.p.getListagemPaciente().get(i).getNome(),
                 CadastrarPaciente.p.getListagemPaciente().get(i).getCpf(),
-                CadastrarPaciente.p.getListagemPaciente().get(i).getRg(),
-                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getIdade()),
-                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i)),
-                
-            });
+                String.valueOf(CadastrarPaciente.p.getListagemPaciente().get(i).getIdade()),});
         }
-        listagemPaciente.setModel(modelo);
+        tabelaListagemPaciente.setModel(modelo);
 
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -48,32 +42,49 @@ public class ListaPaciente extends javax.swing.JFrame  {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listagemPaciente = new javax.swing.JTable();
+        tabelaListagemPaciente = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        selecionarPacienteLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        listagemPaciente.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaListagemPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "CPF", "RG", "Idade"
+                "Id", "Nome", "Especialidade", "CRM"
             }
-        ));
-        listagemPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listagemPacienteMouseClicked(evt);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(listagemPaciente);
+        tabelaListagemPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaListagemPacienteMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelaListagemPaciente);
 
-        jButton1.setBackground(new java.awt.Color(51, 204, 0));
-        jButton1.setText("Selecionar");
+        selecionarPacienteLista.setBackground(new java.awt.Color(51, 204, 0));
+        selecionarPacienteLista.setText("Selecionar");
+        selecionarPacienteLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarPacienteListaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,7 +97,7 @@ public class ListaPaciente extends javax.swing.JFrame  {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(selecionarPacienteLista)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -96,7 +107,7 @@ public class ListaPaciente extends javax.swing.JFrame  {
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(selecionarPacienteLista))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -116,20 +127,35 @@ public class ListaPaciente extends javax.swing.JFrame  {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listagemPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemPacienteMouseClicked
+    private void tabelaListagemPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListagemPacienteMouseClicked
         // TODO add your handling code here:
-        if (listagemPaciente.getSelectedRow() > -1) {
-            
+        if (tabelaListagemPaciente.getSelectedRow() > -1) {
+
         }
-        listagemPaciente.getColumn(0);
-        listagemPaciente.getColumn(1);
-        listagemPaciente.getColumn(2);
-        listagemPaciente.getColumn(3);
-        listagemPaciente.getColumn(4);
-        listagemPaciente.getColumn(5);
+        tabelaListagemPaciente.getColumn(0);
+        tabelaListagemPaciente.getColumn(1);
+        tabelaListagemPaciente.getColumn(2);
+        tabelaListagemPaciente.getColumn(3);
+        tabelaListagemPaciente.getColumn(4);
+        tabelaListagemPaciente.getColumn(5);
         return;
+
+    }//GEN-LAST:event_tabelaListagemPacienteMouseClicked
+
+    public JTable getTabelaListagemPaciente() {
+        return tabelaListagemPaciente;
+    }
+
+    private void selecionarPacienteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarPacienteListaActionPerformed
+        int row = tabelaListagemPaciente.getSelectedRow();
+
+        String codPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 0));
+        String nomePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 1));
+        String cpfPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 2));
+        String idadePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 3));
         
-    }//GEN-LAST:event_listagemPacienteMouseClicked
+        
+    }//GEN-LAST:event_selecionarPacienteListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,10 +194,10 @@ public class ListaPaciente extends javax.swing.JFrame  {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable listagemPaciente;
+    private javax.swing.JButton selecionarPacienteLista;
+    private javax.swing.JTable tabelaListagemPaciente;
     // End of variables declaration//GEN-END:variables
 }
