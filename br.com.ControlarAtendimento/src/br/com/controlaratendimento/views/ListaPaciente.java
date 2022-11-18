@@ -21,11 +21,6 @@ public class ListaPaciente extends javax.swing.JFrame {
         informTablePaciente();
     }
 
-    public Paciente chamaPaciente() {
-        new ListaPaciente().setVisible(true);
-        return pacienteselecionado;
-    }
-
     public void informTablePaciente() {
         DefaultTableModel modelo = new DefaultTableModel();
 
@@ -137,18 +132,7 @@ public class ListaPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaListagemPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListagemPacienteMouseClicked
-        // TODO add your handling code here:
-        if (tabelaListagemPaciente.getSelectedRow() > -1) {
-
-        }
-        tabelaListagemPaciente.getColumn(0);
-        tabelaListagemPaciente.getColumn(1);
-        tabelaListagemPaciente.getColumn(2);
-        tabelaListagemPaciente.getColumn(3);
-        tabelaListagemPaciente.getColumn(4);
-        tabelaListagemPaciente.getColumn(5);
-        return;
-
+       
     }//GEN-LAST:event_tabelaListagemPacienteMouseClicked
 
     public JTable getTabelaListagemPaciente() {
@@ -164,16 +148,22 @@ public class ListaPaciente extends javax.swing.JFrame {
         String cpfPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 2));
         String idadePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 3));
 
-        JOptionPane.showMessageDialog(null, "Cod" + codPc + "nome" + nomePc);
-
         pacienteselecionado = new Paciente();
         pacienteselecionado.setId(Integer.parseInt(codPc));
         pacienteselecionado.setNome(nomePc);
         pacienteselecionado.setCpf(cpfPc);
         pacienteselecionado.setIdade(Integer.parseInt(idadePc));
+        
+        JOptionPane.showMessageDialog(null, "Paciente selecionado: " + pacienteselecionado.toString());
 
+        
+        
     }//GEN-LAST:event_selecionarPacienteListaActionPerformed
 
+    public Paciente chamaPaciente() {
+        return pacienteselecionado;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

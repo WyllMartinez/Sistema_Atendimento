@@ -12,88 +12,13 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
 public class AdicionarFila extends javax.swing.JFrame {
 
     public AdicionarFila() {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
         idPacienteFila.getSelectedText();
-        
-    }
-    
-    
-    
-  
-    
-    
-    
-    
-
-  public JTextField getCpfMedicoFila() {
-        return cpfMedicoFila;
-    }
-
-    public void setCpfMedicoFila(JTextField cpfMedicoFila) {
-        this.cpfMedicoFila = cpfMedicoFila;
-    }
-
-    public JTextField getCpfPacienteFila() {
-        return cpfPacienteFila;
-    }
-
-    public void setCpfPacienteFila(JTextField cpfPacienteFila) {
-        this.cpfPacienteFila = cpfPacienteFila;
-    }
-
-    public JTextField getEspecializacaoMedicoFila() {
-        return especializacaoMedicoFila;
-    }
-
-    public void setEspecializacaoMedicoFila(JTextField especializacaoMedicoFila) {
-        this.especializacaoMedicoFila = especializacaoMedicoFila;
-    }
-
-    public JTextField getIdMedicoFila() {
-        return idMedicoFila;
-    }
-
-    public void setIdMedicoFila(JTextField idMedicoFila) {
-        this.idMedicoFila = idMedicoFila;
-    }
-
-    public JTextField getIdPacienteFila() {
-        return idPacienteFila;
-    }
-
-    public void setIdPacienteFila(JTextField idPacienteFila) {
-        this.idPacienteFila = idPacienteFila;
-    }
-
-    public JTextField getIdadePacienteFila() {
-        return idadePacienteFila;
-    }
-
-    public void setIdadePacienteFila(JTextField idadePacienteFila) {
-        this.idadePacienteFila = idadePacienteFila;
-    }
-
-    public JTextField getNomeMedicoFila() {
-        return nomeMedicoFila;
-    }
-
-    public void setNomeMedicoFila(JTextField nomeMedicoFila) {
-        this.nomeMedicoFila = nomeMedicoFila;
-    }
-
-    public JTextField getNomePacienteFila() {
-        return nomePacienteFila;
-    }
-
-    public void setNomePacienteFila(JTextField nomePacienteFila) {
-        this.nomePacienteFila = nomePacienteFila;
     }
 
     @SuppressWarnings("unchecked")
@@ -118,6 +43,7 @@ public class AdicionarFila extends javax.swing.JFrame {
         idadePacienteFila = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,6 +73,7 @@ public class AdicionarFila extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
+        idPacienteFila.setBackground(new java.awt.Color(255, 102, 102));
         idPacienteFila.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 idPacienteFilaKeyPressed(evt);
@@ -166,6 +93,7 @@ public class AdicionarFila extends javax.swing.JFrame {
 
         jLabel3.setText("CPF:");
 
+        idMedicoFila.setBackground(new java.awt.Color(255, 102, 102));
         idMedicoFila.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 idMedicoFilaKeyPressed(evt);
@@ -188,7 +116,11 @@ public class AdicionarFila extends javax.swing.JFrame {
 
         jLabel8.setText("Idade:");
 
+        jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setText("Adicionar");
+
+        jLabel4.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel4.setText("*F9 no campo em vermelho abre a tela de seleção");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,6 +129,17 @@ public class AdicionarFila extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(especializacaoMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpfMedicoFila))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -218,24 +161,16 @@ public class AdicionarFila extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(idMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nomeMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(especializacaoMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cpfMedicoFila)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                                .addComponent(nomeMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomePacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,16 +224,13 @@ public class AdicionarFila extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeMedicoFilaActionPerformed
 
     private void idPacienteFilaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idPacienteFilaKeyPressed
-        // TODO add your handling code here:
-
-        if (KeyEvent.getKeyText(evt.getKeyCode()) == "F9") {
-            ListaPaciente lista = new ListaPaciente();
+        
+        ListaPaciente lista = new ListaPaciente();
+        Paciente paciente = lista.chamaPaciente();
+        
+        if ("F9".equals(KeyEvent.getKeyText(evt.getKeyCode()))) {
             lista.setVisible(true);
-            Paciente paciente = lista.chamaPaciente();
-            
-            setaCampos();
         }
-
     }//GEN-LAST:event_idPacienteFilaKeyPressed
 
     private void idMedicoFilaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idMedicoFilaKeyPressed
@@ -308,151 +240,14 @@ public class AdicionarFila extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_idMedicoFilaKeyPressed
 
-    public void setaCampos() {
-        
-    }
-
     public static void main(String args[]) {
 
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AdicionarFila adcFila = new AdicionarFila();
-                adcFila.setVisible(true);
-                
-                
-                
+                new AdicionarFila();
             }
         });
     }
-
-    public JRootPane getRootPane() {
-        return rootPane;
-    }
-
-    public boolean isRootPaneCheckingEnabled() {
-        return rootPaneCheckingEnabled;
-    }
-
-    public AccessibleContext getAccessibleContext() {
-        return accessibleContext;
-    }
-
-    public static int getDEFAULT_CURSOR() {
-        return DEFAULT_CURSOR;
-    }
-
-    public static int getCROSSHAIR_CURSOR() {
-        return CROSSHAIR_CURSOR;
-    }
-
-    public static int getTEXT_CURSOR() {
-        return TEXT_CURSOR;
-    }
-
-    public static int getWAIT_CURSOR() {
-        return WAIT_CURSOR;
-    }
-
-    public static int getSW_RESIZE_CURSOR() {
-        return SW_RESIZE_CURSOR;
-    }
-
-    public static int getSE_RESIZE_CURSOR() {
-        return SE_RESIZE_CURSOR;
-    }
-
-    public static int getNW_RESIZE_CURSOR() {
-        return NW_RESIZE_CURSOR;
-    }
-
-    public static int getNE_RESIZE_CURSOR() {
-        return NE_RESIZE_CURSOR;
-    }
-
-    public static int getN_RESIZE_CURSOR() {
-        return N_RESIZE_CURSOR;
-    }
-
-    public static int getS_RESIZE_CURSOR() {
-        return S_RESIZE_CURSOR;
-    }
-
-    public static int getW_RESIZE_CURSOR() {
-        return W_RESIZE_CURSOR;
-    }
-
-    public static int getE_RESIZE_CURSOR() {
-        return E_RESIZE_CURSOR;
-    }
-
-    public static int getHAND_CURSOR() {
-        return HAND_CURSOR;
-    }
-
-    public static int getMOVE_CURSOR() {
-        return MOVE_CURSOR;
-    }
-
-    public static int getNORMAL() {
-        return NORMAL;
-    }
-
-    public static int getICONIFIED() {
-        return ICONIFIED;
-    }
-
-    public static int getMAXIMIZED_HORIZ() {
-        return MAXIMIZED_HORIZ;
-    }
-
-    public static int getMAXIMIZED_VERT() {
-        return MAXIMIZED_VERT;
-    }
-
-    public static int getMAXIMIZED_BOTH() {
-        return MAXIMIZED_BOTH;
-    }
-
-    public static float getTOP_ALIGNMENT() {
-        return TOP_ALIGNMENT;
-    }
-
-    public static float getCENTER_ALIGNMENT() {
-        return CENTER_ALIGNMENT;
-    }
-
-    public static float getBOTTOM_ALIGNMENT() {
-        return BOTTOM_ALIGNMENT;
-    }
-
-    public static float getLEFT_ALIGNMENT() {
-        return LEFT_ALIGNMENT;
-    }
-
-    public static float getRIGHT_ALIGNMENT() {
-        return RIGHT_ALIGNMENT;
-    }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cpfMedicoFila;
     private javax.swing.JTextField cpfPacienteFila;
@@ -464,6 +259,7 @@ public class AdicionarFila extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
