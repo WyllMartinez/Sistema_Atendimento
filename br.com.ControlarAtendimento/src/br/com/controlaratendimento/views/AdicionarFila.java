@@ -4,8 +4,14 @@
  */
 package br.com.controlaratendimento.views;
 
+import br.com.controlaratendimento.models.Paciente;
 import java.awt.event.KeyEvent;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JRootPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 
 public class AdicionarFila extends javax.swing.JFrame {
 
@@ -13,9 +19,20 @@ public class AdicionarFila extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        idPacienteFila.getSelectedText();
+        
     }
+    
+    
+    
+  
+    
+    
+    
+    
 
-    public JTextField getCpfMedicoFila() {
+  public JTextField getCpfMedicoFila() {
         return cpfMedicoFila;
     }
 
@@ -275,7 +292,10 @@ public class AdicionarFila extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (KeyEvent.getKeyText(evt.getKeyCode()) == "F9") {
-            new ListaPaciente().setVisible(true);
+            ListaPaciente lista = new ListaPaciente();
+            lista.setVisible(true);
+            Paciente paciente = lista.chamaPaciente();
+            
             setaCampos();
         }
 
@@ -315,10 +335,123 @@ public class AdicionarFila extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdicionarFila().setVisible(true);
+                AdicionarFila adcFila = new AdicionarFila();
+                adcFila.setVisible(true);
+                
+                
+                
             }
         });
     }
+
+    public JRootPane getRootPane() {
+        return rootPane;
+    }
+
+    public boolean isRootPaneCheckingEnabled() {
+        return rootPaneCheckingEnabled;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public static int getDEFAULT_CURSOR() {
+        return DEFAULT_CURSOR;
+    }
+
+    public static int getCROSSHAIR_CURSOR() {
+        return CROSSHAIR_CURSOR;
+    }
+
+    public static int getTEXT_CURSOR() {
+        return TEXT_CURSOR;
+    }
+
+    public static int getWAIT_CURSOR() {
+        return WAIT_CURSOR;
+    }
+
+    public static int getSW_RESIZE_CURSOR() {
+        return SW_RESIZE_CURSOR;
+    }
+
+    public static int getSE_RESIZE_CURSOR() {
+        return SE_RESIZE_CURSOR;
+    }
+
+    public static int getNW_RESIZE_CURSOR() {
+        return NW_RESIZE_CURSOR;
+    }
+
+    public static int getNE_RESIZE_CURSOR() {
+        return NE_RESIZE_CURSOR;
+    }
+
+    public static int getN_RESIZE_CURSOR() {
+        return N_RESIZE_CURSOR;
+    }
+
+    public static int getS_RESIZE_CURSOR() {
+        return S_RESIZE_CURSOR;
+    }
+
+    public static int getW_RESIZE_CURSOR() {
+        return W_RESIZE_CURSOR;
+    }
+
+    public static int getE_RESIZE_CURSOR() {
+        return E_RESIZE_CURSOR;
+    }
+
+    public static int getHAND_CURSOR() {
+        return HAND_CURSOR;
+    }
+
+    public static int getMOVE_CURSOR() {
+        return MOVE_CURSOR;
+    }
+
+    public static int getNORMAL() {
+        return NORMAL;
+    }
+
+    public static int getICONIFIED() {
+        return ICONIFIED;
+    }
+
+    public static int getMAXIMIZED_HORIZ() {
+        return MAXIMIZED_HORIZ;
+    }
+
+    public static int getMAXIMIZED_VERT() {
+        return MAXIMIZED_VERT;
+    }
+
+    public static int getMAXIMIZED_BOTH() {
+        return MAXIMIZED_BOTH;
+    }
+
+    public static float getTOP_ALIGNMENT() {
+        return TOP_ALIGNMENT;
+    }
+
+    public static float getCENTER_ALIGNMENT() {
+        return CENTER_ALIGNMENT;
+    }
+
+    public static float getBOTTOM_ALIGNMENT() {
+        return BOTTOM_ALIGNMENT;
+    }
+
+    public static float getLEFT_ALIGNMENT() {
+        return LEFT_ALIGNMENT;
+    }
+
+    public static float getRIGHT_ALIGNMENT() {
+        return RIGHT_ALIGNMENT;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cpfMedicoFila;

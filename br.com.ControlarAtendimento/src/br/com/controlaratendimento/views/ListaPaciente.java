@@ -1,23 +1,32 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.com.controlaratendimento.views;
 
-import java.awt.ActiveEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
+import br.com.controlaratendimento.models.Paciente;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ListaPaciente extends javax.swing.JFrame {
 
-    public ListaPaciente() {
+    Paciente pacienteselecionado;
+
+    ListaPaciente() {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        informTablePaciente();
+    }
 
+    public Paciente chamaPaciente() {
+        new ListaPaciente().setVisible(true);
+        return pacienteselecionado;
+    }
+
+    public void informTablePaciente() {
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.addColumn("Id");
@@ -147,19 +156,24 @@ public class ListaPaciente extends javax.swing.JFrame {
     }
 
     private void selecionarPacienteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarPacienteListaActionPerformed
-        
+
         int row = tabelaListagemPaciente.getSelectedRow();
-        
+
         String codPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 0));
         String nomePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 1));
         String cpfPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 2));
         String idadePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 3));
 
+        JOptionPane.showMessageDialog(null, "Cod" + codPc + "nome" + nomePc);
+
+        pacienteselecionado = new Paciente();
+        pacienteselecionado.setId(Integer.parseInt(codPc));
+        pacienteselecionado.setNome(nomePc);
+        pacienteselecionado.setCpf(cpfPc);
+        pacienteselecionado.setIdade(Integer.parseInt(idadePc));
+
     }//GEN-LAST:event_selecionarPacienteListaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -188,7 +202,8 @@ public class ListaPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaPaciente().setVisible(true);
+                ListaPaciente lstPct = new ListaPaciente();
+                lstPct.setVisible(true);
             }
         });
     }
