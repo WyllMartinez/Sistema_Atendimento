@@ -24,12 +24,10 @@ public class CadastrarMedico extends javax.swing.JFrame {
     
     public CadastrarMedico() {
         initComponents();
-        
         setSize(700, 475);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       
     }
 
     /**
