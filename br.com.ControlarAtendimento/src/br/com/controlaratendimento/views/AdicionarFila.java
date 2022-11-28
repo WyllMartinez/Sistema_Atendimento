@@ -230,6 +230,8 @@ public class AdicionarFila extends javax.swing.JFrame {
         
         if ("F9".equals(KeyEvent.getKeyText(evt.getKeyCode()))) {
             lista.setVisible(true);
+            
+            //TESTE
         }
     }//GEN-LAST:event_idPacienteFilaKeyPressed
 
