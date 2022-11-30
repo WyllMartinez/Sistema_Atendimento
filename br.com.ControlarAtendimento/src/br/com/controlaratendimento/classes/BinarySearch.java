@@ -4,10 +4,6 @@
  */
 package br.com.controlaratendimento.classes;
 
-/**
- *
- * @author bruno
- */
-public class Busca {
+public class BinarySearch {
     
 }

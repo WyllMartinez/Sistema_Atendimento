@@ -4,6 +4,7 @@
  */
 package br.com.controlaratendimento.views;
 
+import br.com.controlaratendimento.classes.FilaAtendimento;
 import br.com.controlaratendimento.models.Paciente;
 import java.awt.event.KeyEvent;
 import javax.accessibility.AccessibleContext;
@@ -20,6 +21,9 @@ public class AdicionarFila extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         idPacienteFila.getSelectedText();
     }
+
+    public static FilaAtendimento atendimentoPreferencial = new FilaAtendimento(10);
+    public static FilaAtendimento atendimentoNormal = new FilaAtendimento(10);
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -42,7 +46,7 @@ public class AdicionarFila extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         idadePacienteFila = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAtendimento = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,9 +75,9 @@ public class AdicionarFila extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
-        idPacienteFila.setBackground(new java.awt.Color(255, 102, 102));
+        idPacienteFila.setBackground(new java.awt.Color(204, 204, 255));
         idPacienteFila.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 idPacienteFilaKeyPressed(evt);
@@ -93,7 +97,7 @@ public class AdicionarFila extends javax.swing.JFrame {
 
         jLabel3.setText("CPF:");
 
-        idMedicoFila.setBackground(new java.awt.Color(255, 102, 102));
+        idMedicoFila.setBackground(new java.awt.Color(204, 204, 255));
         idMedicoFila.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 idMedicoFilaKeyPressed(evt);
@@ -116,11 +120,16 @@ public class AdicionarFila extends javax.swing.JFrame {
 
         jLabel8.setText("Idade:");
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setText("Adicionar");
+        btnAtendimento.setBackground(new java.awt.Color(51, 255, 51));
+        btnAtendimento.setText("Adicionar");
+        btnAtendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtendimentoActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel4.setText("*F9 no campo em vermelho abre a tela de seleção");
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("*F9 no campo em azul abre a tela de seleção");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,7 +146,7 @@ public class AdicionarFila extends javax.swing.JFrame {
                                 .addComponent(especializacaoMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cpfMedicoFila))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -193,7 +202,7 @@ public class AdicionarFila extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addGap(27, 27, 27)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -224,14 +233,13 @@ public class AdicionarFila extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeMedicoFilaActionPerformed
 
     private void idPacienteFilaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idPacienteFilaKeyPressed
-        
+
         ListaPaciente lista = new ListaPaciente();
         Paciente paciente = lista.chamaPaciente();
-        
+
         if ("F9".equals(KeyEvent.getKeyText(evt.getKeyCode()))) {
             lista.setVisible(true);
-            
-            //TESTE
+
         }
     }//GEN-LAST:event_idPacienteFilaKeyPressed
 
@@ -242,6 +250,10 @@ public class AdicionarFila extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_idMedicoFilaKeyPressed
 
+    private void btnAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtendimentoActionPerformed
+
+    }//GEN-LAST:event_btnAtendimentoActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -251,13 +263,13 @@ public class AdicionarFila extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtendimento;
     private javax.swing.JTextField cpfMedicoFila;
     private javax.swing.JTextField cpfPacienteFila;
     private javax.swing.JTextField especializacaoMedicoFila;
     private javax.swing.JTextField idMedicoFila;
     private javax.swing.JTextField idPacienteFila;
     private javax.swing.JTextField idadePacienteFila;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

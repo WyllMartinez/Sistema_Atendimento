@@ -9,6 +9,7 @@ package br.com.controlaratendimento.models;
  * @author bruno
  */
 public class Atendimento {
+    
     private Paciente paciente;
     private Medico medico;
 

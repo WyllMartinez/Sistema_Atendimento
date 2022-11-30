@@ -23,7 +23,7 @@ public class Medico {
     private String endereco;
     private String bairro;
     private String complemento;
-    private int crm;
+    private String crm;
     
     private ArrayList<Medico> listagemMedico = new ArrayList<>();
     
@@ -131,11 +131,11 @@ public class Medico {
         this.complemento = complemento;
     }
 
-    public int getCrm() {
+    public String getCrm() {
         return crm;
     }
 
-    public void setCrm(int crm) {
+    public void setCrm(String crm) {
         this.crm = crm;
     }
     

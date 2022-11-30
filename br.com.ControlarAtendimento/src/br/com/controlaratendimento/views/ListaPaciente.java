@@ -24,10 +24,10 @@ public class ListaPaciente extends javax.swing.JFrame {
     public void informTablePaciente() {
         DefaultTableModel modelo = new DefaultTableModel();
 
-        modelo.addColumn("Id");
+        modelo.addColumn("ID");
         modelo.addColumn("Nome");
         modelo.addColumn("CPF");
-        modelo.addColumn("IDade");
+        modelo.addColumn("Idade");
 
         for (int i = 0; i < CadastrarPaciente.p.getListagemPaciente().size(); i++) {
             modelo.addRow(new String[]{
@@ -108,7 +108,7 @@ public class ListaPaciente extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selecionarPacienteLista))
@@ -132,7 +132,7 @@ public class ListaPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaListagemPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListagemPacienteMouseClicked
-       
+
     }//GEN-LAST:event_tabelaListagemPacienteMouseClicked
 
     public JTable getTabelaListagemPaciente() {
@@ -143,27 +143,30 @@ public class ListaPaciente extends javax.swing.JFrame {
 
         int row = tabelaListagemPaciente.getSelectedRow();
 
-        String codPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 0));
-        String nomePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 1));
-        String cpfPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 2));
-        String idadePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 3));
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Atenção! Selecione um paciente");
+        } else {
+            String codPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 0));
+            String nomePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 1));
+            String cpfPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 2));
+            String idadePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 3));
 
-        pacienteselecionado = new Paciente();
-        pacienteselecionado.setId(Integer.parseInt(codPc));
-        pacienteselecionado.setNome(nomePc);
-        pacienteselecionado.setCpf(cpfPc);
-        pacienteselecionado.setIdade(Integer.parseInt(idadePc));
-        
-        JOptionPane.showMessageDialog(null, "Paciente selecionado: " + pacienteselecionado.toString());
+            pacienteselecionado = new Paciente();
+            pacienteselecionado.setId(Integer.parseInt(codPc));
+            pacienteselecionado.setNome(nomePc);
+            pacienteselecionado.setCpf(cpfPc);
+            pacienteselecionado.setIdade(Integer.parseInt(idadePc));
 
-        
-        
+            //JOptionPane.showMessageDialog(null, "Paciente selecionado: " + pacienteselecionado.toString());
+        }
+
+
     }//GEN-LAST:event_selecionarPacienteListaActionPerformed
 
     public Paciente chamaPaciente() {
         return pacienteselecionado;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
