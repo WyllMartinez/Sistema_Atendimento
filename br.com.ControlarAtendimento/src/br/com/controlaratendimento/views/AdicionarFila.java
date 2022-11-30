@@ -7,11 +7,7 @@ package br.com.controlaratendimento.views;
 import br.com.controlaratendimento.classes.FilaAtendimento;
 import br.com.controlaratendimento.models.Paciente;
 import java.awt.event.KeyEvent;
-import javax.accessibility.AccessibleContext;
-import javax.swing.JRootPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 public class AdicionarFila extends javax.swing.JFrame {
 
@@ -19,7 +15,8 @@ public class AdicionarFila extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        idPacienteFila.getSelectedText();
+
+        setVisible(true);
     }
 
     public static FilaAtendimento atendimentoPreferencial = new FilaAtendimento(10);
@@ -42,12 +39,15 @@ public class AdicionarFila extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         especializacaoMedicoFila = new javax.swing.JTextField();
-        cpfMedicoFila = new javax.swing.JTextField();
+        crmMedicoFila = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         idadePacienteFila = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btnAtendimento = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        buscar = new javax.swing.JButton();
+        btnAdcMedico = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +131,25 @@ public class AdicionarFila extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("*F9 no campo em azul abre a tela de seleção");
 
+        buscar.setBackground(new java.awt.Color(153, 153, 255));
+        buscar.setText("Adiconar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        btnAdcMedico.setBackground(new java.awt.Color(153, 153, 255));
+        btnAdcMedico.setText("Adicionar");
+        btnAdcMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdcMedicoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setForeground(new java.awt.Color(51, 255, 102));
+        jLabel9.setText("*Após selecionar, clique em adicionar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -148,7 +167,7 @@ public class AdicionarFila extends javax.swing.JFrame {
                                 .addComponent(jLabel7))
                             .addComponent(btnAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cpfMedicoFila))
+                        .addComponent(crmMedicoFila))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -156,54 +175,66 @@ public class AdicionarFila extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cpfPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idadePacienteFila))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(idPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nomePacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(idMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nomeMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(cpfPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(idadePacienteFila))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(idPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(nomePacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(idMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(nomeMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdcMedico)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomePacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(12, 12, 12)
+                    .addComponent(jLabel2)
+                    .addComponent(buscar))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpfPacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(idadePacienteFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(nomeMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(idMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdcMedico))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(especializacaoMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpfMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crmMedicoFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addGap(27, 27, 27)
                 .addComponent(btnAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,6 +278,7 @@ public class AdicionarFila extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (KeyEvent.getKeyText(evt.getKeyCode()) == "F9") {
             new ListaMedico().setVisible(true);
+
         }
     }//GEN-LAST:event_idMedicoFilaKeyPressed
 
@@ -254,18 +286,45 @@ public class AdicionarFila extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAtendimentoActionPerformed
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        if (ListaPaciente.pacienteselecionado != null) {
+            nomePacienteFila.setText(ListaPaciente.pacienteselecionado.getNome());
+            idPacienteFila.setText(String.valueOf(ListaPaciente.pacienteselecionado.getId()));
+            cpfPacienteFila.setText(ListaPaciente.pacienteselecionado.getCpf());
+            idadePacienteFila.setText(String.valueOf(ListaPaciente.pacienteselecionado.getIdade()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione o paciente, pressionando F9");
+        }
+
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void btnAdcMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdcMedicoActionPerformed
+        if (ListaMedico.medicoSelecionado != null) {
+            nomeMedicoFila.setText(ListaMedico.medicoSelecionado.getNome());
+            idMedicoFila.setText(String.valueOf(ListaMedico.medicoSelecionado.getId()));
+            crmMedicoFila.setText(ListaMedico.medicoSelecionado.getCrm());
+            especializacaoMedicoFila.setText(ListaMedico.medicoSelecionado.getEspecializacao());
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione o médico, pressionando F9");
+        }
+        
+    }//GEN-LAST:event_btnAdcMedicoActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AdicionarFila();
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdcMedico;
     private javax.swing.JButton btnAtendimento;
-    private javax.swing.JTextField cpfMedicoFila;
+    private javax.swing.JButton buscar;
     private javax.swing.JTextField cpfPacienteFila;
+    private javax.swing.JTextField crmMedicoFila;
     private javax.swing.JTextField especializacaoMedicoFila;
     private javax.swing.JTextField idMedicoFila;
     private javax.swing.JTextField idPacienteFila;
@@ -278,9 +337,10 @@ public class AdicionarFila extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nomeMedicoFila;
-    private javax.swing.JTextField nomePacienteFila;
+    public javax.swing.JTextField nomePacienteFila;
     // End of variables declaration//GEN-END:variables
 }

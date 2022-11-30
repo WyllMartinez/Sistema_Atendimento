@@ -4,6 +4,7 @@
  */
 package br.com.controlaratendimento.views;
 
+import br.com.controlaratendimento.classes.FilaAtendimento;
 import br.com.controlaratendimento.models.Paciente;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListaPaciente extends javax.swing.JFrame {
 
-    Paciente pacienteselecionado;
+    public static Paciente pacienteselecionado;
 
     ListaPaciente() {
         initComponents();
@@ -144,7 +145,8 @@ public class ListaPaciente extends javax.swing.JFrame {
         int row = tabelaListagemPaciente.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Atenção! Selecione um paciente");
+            JOptionPane.showMessageDialog(null, "Atenção! Nenhum Paciente Selecionado");
+            ListaPaciente.this.dispose();
         } else {
             String codPc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 0));
             String nomePc = String.valueOf(tabelaListagemPaciente.getValueAt(row, 1));
@@ -157,7 +159,8 @@ public class ListaPaciente extends javax.swing.JFrame {
             pacienteselecionado.setCpf(cpfPc);
             pacienteselecionado.setIdade(Integer.parseInt(idadePc));
 
-            //JOptionPane.showMessageDialog(null, "Paciente selecionado: " + pacienteselecionado.toString());
+            ListaPaciente.this.dispose();
+            
         }
 
 
